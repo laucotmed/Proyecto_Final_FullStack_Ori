@@ -56,17 +56,19 @@
     <!-- Tarjeta con icono, título, descripción e imagen con cada habilidad-->
 
     <?php
-
+      try{
       /* con esto incluimos el código que se encuentra en connection.php y realizamos un echo para comprobar que la conexión es correcta */
       require_once "db/connection.php";
       /* echo "Conectado a la base de datos".$dbname." en el host ".$host; */
 
       include "pages/select.php";
      /*  foreach($skills as $skill){ */
-      var_dump($skills);
-        echo "<p>".$skills["nombre"]." - ".$skills["img"]." - ".$skills["control_consola"]."</p>";
+      /* var_dump($skills); */
+        echo "<p>".$skill[0]["nombre"]." - ".$skill[0]["img"]." - ".$skill[0]["control_consola"]."</p>";
     /* } */
-
+  }catch(PDOException $error){
+    die("No se ha podido acceder a la base de datos".$dbname.":".$error->getMessage()); //función flecha para acceder al método get Message
+}
     ?>
 
     <div id="card">
