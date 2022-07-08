@@ -32,7 +32,7 @@
     <!--  MENÚ PRINCIPAL -->
     <nav class="menu">
         <!-- Logo -->
-        <div id="menu_logo"><a href="./index.php"><img src="./src/img/logo.png" alt="Ori and the Blind Forest Logo.png"></a></div>
+        <div id="menu_logo"><a href="./index.php"><img src="src/img/logo.png" alt="Ori and the Blind Forest Logo.png"></a></div>
 
         <!-- Menú hamburguesa que se mostrará cuando el tamaño sea lo suficientemente pequeño -->
         <div id="burger_menu">
@@ -49,7 +49,18 @@
         </ul>
     </nav>
 
+    <!-- TARJETA DATOS HABILIDADES -->
+
     <section id="skills">
+
+    <!-- Tarjeta con icono, título, descripción e imagen con cada habilidad-->
+
+    <?php
+
+      require_once "db/connection.php";
+      echo "Conectado a la base de datos".$dbname." en el host ".$host;
+
+    ?>
 
     <div id="card">
       <div id="profile">
