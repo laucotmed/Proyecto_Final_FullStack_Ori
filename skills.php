@@ -62,9 +62,10 @@
       /* echo "Conectado a la base de datos".$dbname." en el host ".$host; */
 
       include "pages/select.php";
-      foreach($skills as $skill){
-        echo "<p>".$skill["nombre"]." - ".$skill["img"]."€ - ".$skill["control_consola"]."</p>";
-    }
+     /*  foreach($skills as $skill){ */
+      var_dump("$skills");
+        echo "<p>".$skills["nombre"]." - ".$skills["img"]."€ - ".$skills["control_consola"]."</p>";
+    /* } */
 
     ?>
 
