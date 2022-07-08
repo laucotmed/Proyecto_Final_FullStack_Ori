@@ -1,8 +1,15 @@
 <?php
 
-/* if(isset($_POST["btnEditar"])){ */
+try{
+    $skills = $connection->query("SELECT * FROM skills WHERE skills.id = 1")->fetchAll();
+}catch(Exception $error){
+    echo $error;
+}
 
-    $id_skill = $_POST["item"];
+
+/* if(isset($_POST["btnEditar"])){ 
+
+   $id_skill = $_POST["item"];
     
     $skills = "SELECT * FROM skills WHERE skills.id=?";
     
@@ -13,8 +20,8 @@
         }catch(Exception $error){
         echo $error;
        
-    }
+    } 
     
-/*   } */
+} */
 
 ?>
