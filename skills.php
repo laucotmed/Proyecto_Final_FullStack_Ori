@@ -62,39 +62,38 @@
       /* echo "Conectado a la base de datos".$dbname." en el host ".$host; */
 
       include "pages/select.php";
-     /*  foreach($skills as $skill){ */
-      /* var_dump($skills); */
-        echo "<p>".$skill[0]["nombre"]." - ".$skill[0]["img"]." - ".$skill[0]["control_consola"]."</p>";
-    /* } */
+    
   }catch(PDOException $error){
     die("No se ha podido acceder a la base de datos".$dbname.":".$error->getMessage()); //función flecha para acceder al método get Message
 }
     ?>
 
-    <div id="card">
+<div id="card">
+      <div id="card_content">
       <div id="profile">
-        <div id="img_skill"><img src="src/img/skills/Stomp.png" alt="stomp.png"></div>
-        <h1>STOMP</h1>
+        <div id="img_skill"><img src="src/img/skills/SpiritFlame.png" alt="SpiritFlame.png"></div>
+        <h1>Spirit Flame</h1>
       </div>
-      <div id="description">
-        <p>To use this ability hold <span><img src="src/img/controls/SWButtonA.png" alt="buttonY.png"></span> / <span><img src="src/img/controls/KeyboardButtonK.png" alt="buttonY.png"></span> near lanterns or enemy projectiles. then aim in the direction you'd like to leap. Projectiles will be redirected in the opposite direction</p>
+      <div id="description"> 
+        <p>Tap <span><img src="src/img/controls/SWButtonX.png"  alt="SWButtonX.png"></span> / <span><img src="src/img/controls/MouseButtonRight.png" alt="MouseButtonRight.png"></span> repeatedly to use the Spirit Flame orb and quickly attack enemies even if they are some distance away.</p>
         <div id="description_img"><img src="src/img/skills/SpiritFlame2.png" alt="SpiritFlame2.png"></div>
+      </div>
       </div>
     </div>
 
     <div class="carousel-wrap">
       <div class="slider owl-carousel owl-theme">
-        <div class="item" value="1"><img src="src/img/skills/SpiritFlame.png" alt="SpiritFlameIcon.png"></div>
-        <div class="item"><img src="src/img/skills/WallJump.png" alt="WallJumpIcon.png"></div>
-        <div class="item"><img src="src/img/skills/ChargeFlame.png" alt="ChargeFlameIcon.png"></div>
-        <div class="item"><img src="src/img/skills/DoubleJump.png" alt="DoubleJumpIcon.png"></div>
-        <div class="item"><img src="src/img/skills/Bash.png" alt="BashIcon.png"></div>
-        <div class="item"><img src="src/img/skills/Stomp.png" alt="Stomp.png"></div>
-        <div class="item"><img src="src/img/skills/Glide.png" alt="GlideIcon.png"></div>
-        <div class="item"><img src="src/img/skills/Climb.png" alt="ClimbIcon.png"></div>
-        <div class="item"><img src="src/img/skills/ChargeJump.png" alt="ChargeJumpIcon.png"></div>
-        <div class="item"><img src="src/img/skills/Dash.png" alt="DashIcon.png"></div>
-        <div class="item"><img src="src/img/skills/LightBurst.png" alt="LightBurstIcon.png"></div>
+        <div class="item" data-value="1"><img src="src/img/skills/SpiritFlame.png" alt="SpiritFlameIcon.png"></div>
+        <div class="item" data-value="2"><img src="src/img/skills/WallJump.png" alt="WallJumpIcon.png"></div>
+        <div class="item" data-value="3"><img src="src/img/skills/ChargeFlame.png" alt="ChargeFlameIcon.png"></div>
+        <div class="item" data-value="4"><img src="src/img/skills/DoubleJump.png" alt="DoubleJumpIcon.png"></div>
+        <div class="item" data-value="5"><img src="src/img/skills/Bash.png" alt="BashIcon.png"></div>
+        <div class="item" data-value="6"><img src="src/img/skills/Stomp.png" alt="Stomp.png"></div>
+        <div class="item" data-value="7"><img src="src/img/skills/Glide.png" alt="GlideIcon.png"></div>
+        <div class="item" data-value="8"><img src="src/img/skills/Climb.png" alt="ClimbIcon.png"></div>
+        <div class="item" data-value="9"><img src="src/img/skills/ChargeJump.png" alt="ChargeJumpIcon.png"></div>
+        <div class="item" data-value="10"><img src="src/img/skills/Dash.png" alt="DashIcon.png"></div>
+        <div class="item" data-value="11"><img src="src/img/skills/LightBurst.png" alt="LightBurstIcon.png"></div>
       </div>
     </div>
 

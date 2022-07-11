@@ -1,30 +1,21 @@
 <?php
 
-try{
-
-    $id_skill = $_POST["item"];
-
-    $skill = $connection->query('SELECT * FROM skills WHERE skills.id="'.$id_skill.'"')->fetchAll();
-}catch(Exception $error){
-    echo $error;
-}
-
-
-/* if(isset($_POST["btnEditar"])){ 
-
+if(isset($_POST["skill_value"])){
    
-    
-    $skills = "SELECT * FROM skills WHERE skills.id=?";
-    
-        try{
-    
-        $connection->prepare($skills)->execute([$id_skill]);
-    
-        }catch(Exception $error){
+   try{
+       include "../db/pdoconfig.php";
+        $connection = new PDO("mysql:host=".$host.";dbname=".$dbname,$username,$password,$options);
+
+        $id_skill = $_POST["skill_value"];
+
+        $skill = $connection->query('SELECT * FROM skills WHERE skills.id="'.$id_skill.'"')->fetchAll();
+
+       echo json_encode($skill);
+
+    }catch(Exception $error){
         echo $error;
-       
-    } 
-    
-} */
+    }
+
+}
 
 ?>

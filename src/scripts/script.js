@@ -47,6 +47,40 @@ $(document).ready(function(){
      // see https://owlcarousel2.github.io/OwlCarousel2/docs/api-events.html#to-owl-carousel
      var $speed = 300;  // in ms
      $owl.trigger('to.owl.carousel', [$(this).data( 'position' ), $speed] );
-});
+    });
+
+    $(".item").on('click', function(e){   
+        e.preventDefault();
+        var skill_value = $(this).data('value');
+        $('#card_content').animate({'opacity':'0.0'}, 1000, function (){
+
+            $.ajax({
+                url : 'pages/select.php',
+                method : 'POST',
+                data : {
+                    'skill_value' : skill_value
+                },
+                success:function(data){
+                     console.log(data);
+                     data = JSON.parse(data);
+                     data.forEach(element => {
+                        $("#card_content").html(
+                            '<div id="profile">'+
+                                '<div id="img_skill"><img src="'+ element.img + '"></div>'+
+                                    '<h1>'+ element.nombre +'</h1>'+
+                                '</div>'+
+                            '<div id="description">'+
+                            '<p>'+ element.descripcion_control_1 +'<span><img src="'+ element.control_consola +'"></span> / <span><img src="'+ element.control_pc +'"></span>'+ element.descripcion_control_2 +' </p>'+
+                            '<div id="description_img"><img src="'+ element.img_skill +'"></div>'+
+                            '</div>'
+                        )
+                        $('#card_content').animate({'opacity':'1.0'}, 1000);
+                    })
+                }
+            }); 
+
+        });
+        
+    });
 
 });
