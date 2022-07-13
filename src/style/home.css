@@ -25,6 +25,11 @@
     box-sizing: border-box;
 }
 
+html{
+    background: linear-gradient(192.01deg, #0D0D2E 7.77%, #0A184B 47.18%, #2C0E31 92.33%);
+    background-repeat: no-repeat;
+}
+
 /* le quitamos el margin y el padding al body para evitar bordes blancos indeseados, y le damos una altura y anchura de mínimo 100% para que ocupen toda la pantalla*/
 html, body{
     margin: 0;
@@ -33,24 +38,32 @@ html, body{
     min-width: 100%;
 }
 
-/* BACKGROUND */
-
-body{
-    background: linear-gradient(192.01deg, #0D0D2E 7.77%, #0A184B 47.18%, #2C0E31 92.33%);
-    background-repeat: no-repeat;
-}
-
 /* MENÚ PRINCIPAL */
 
 /* le damos un ancho de 100% al menú para que ocupe toda la parte de arriba de nuestra web, y con display flex alineamos los elementos del menú (logo y links a otras páginas). Ajustamos también el tamaño del logo  */
 
 .menu{
-   /*  padding: 0.5em 1em; */
+    /* padding: 0.5em 1em; */
     width: 100%;
     display:flex;
     flex-direction: row;
     align-items: center;
     justify-content:space-around;
+    position: fixed;
+    background-color: black;
+}
+
+.menu::after{
+    content: '';
+    position: absolute;
+    bottom: -2.5rem;
+    left: 0rem;
+    right: 0rem;
+    height: 100%;
+    z-index: -1;
+    background-image: url('../img/border.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 
 #menu_logo a img{
@@ -202,212 +215,14 @@ ul.show{
     bottom: 0;
 }
 
-/* TARJETA "SKILLS"*/
-
-/* en esta especie de "tarjeta" se visualizarán los datos de la base de datos. Comenzamos por darle display flex y centrar los elementos (tarjeta y slider) con align-items y justify-content */
-
-#skills{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-/* TARJETA */
-
-/* con esto le damos estilo a la tarjeta (tamaño, fondo, centrar elementos con display:flex). Para el título h1 empleamos otro cálculo realizado con clamp y calc para conseguir que el tamaño del texto se vaya adaptando de forma más fluida según el tamaño del navegador.  */
-
-#card{
-    background-image: url(../img/card_bg.png);
+/* HOME BACKGROUND */
+#home_background{
+    min-height: 100vh;
+    min-width: 100vw;
+    background-image: url(../img/home_background.jpg);
+    background-position: center;
     background-repeat: no-repeat;
-    background-size: 100% 100%;
-    width:70vw;
-    height: 70vh;
-    padding: 2rem;
-    padding-bottom: 3rem;
 }
-
-#card_content{
-    display: flex;
-    justify-content:space-evenly;
-    align-items: center;
-    height: 100%;
-}
-
-#card_content h1{
-    font-family: var(--title-font);
-    color: var(--text-white);
-    text-align: center;
-    font-size: clamp(1.5rem, calc(1.5rem + ((1vw - 0.48rem) * 1.3889)), 2.5rem);
-    margin-block-end: 0;
-    margin-block-start: 0;
-    font-variant: small-caps;
-}
-
-/* logramos que el círculo que corresponde con cada skill esté rodeada por un círculo de aspecto "pintado" usando position:relative en el div padre y con ::after posicionamos dicho círculo como background */
-
-#img_skill{
-    position: relative;
-}
-
-#img_skill img{
-    width: 8rem;
-}
-
-#img_skill::after{
-    content: '';
-    position: absolute;
-    bottom:  0.5rem;
-    left: 0rem;
-    right: 0rem;
-    height: 95%;
-    z-index: -1;
-    background-image: url('../img/circle.svg');
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-/* le damos un tamaño a la parte de la descripción de la tarjeta y display:flex con flex-direction:column para que los elementos salgan en columna. Volvemos a usar el cálculo con clamp para hacer que el texto se adapte de forma fluida al tamaño del navegador. */
-
-#description {
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-#description p{
-    font-family: var(--text-font);
-    color: var(--text-white);
-    font-size: clamp(1rem, calc(1rem + ((1vw - 0.48rem) * 2.7778)), 3rem);
-    font-variant: small-caps;
-    margin-block-start: 0.1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-}
-
-/* usamos span para incluir las imágenes de los iconos de los controles asociados con cada skill y poder intercalarlos con la descripción. Con vertical-align:middle nos aseguramos que las imágenes están centradas de forma vertical al texto */
-
-#description span{
-    text-align: center
-}
-
-#description span img{
-    width:1em;
-    vertical-align:middle;
-}
-
-/* con esto logramos colocar un recuadro de efecto "pintado" alrededor de la foto de ejemplo de la skill dentro del juego usando el mismo método de antes: position relative en el elemento padre, ::after posicionado con top, bottom, left y rigth y recuadro como background-image */
-
-#description_img{
-    position: relative;
-    display: block;
-    width: 100%;
-    height: auto;
-   /*  padding-top: 63.5%; */
-    background-color: transparent;
-}
-
-#description_img img{
-    width: 80%;
-}
-
-#description_img::before{
-    content: '';
-    position: absolute;
-    top: -2.2rem;
-    bottom: -2rem;
-    left: -1rem;
-    /* right: -5rem; */
-    width: 86%;
-    z-index: -2;
-    background-image: url('../img/frame.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-/* SLIDER */
-/* modificación del estilo del carrusel del plugin de JQuery "Owl Carousel.js" para adaptarlo a las necesidades del proyecto. Comenzamos por el contenedor padre del slider/carrusel, indicando su tamaño, centrar el elemento al crearse el margen automáticamente y equitativamente entre ambos lados (derecho e izquierdo) */
-
-.carousel-wrap {
-    width: 85vw;
-    margin: auto;
-    /* position: relative; */
-}
-
-.slider{
-    padding: 0 10em;
-}
-
-.owl-carousel .owl-nav{
-    overflow: hidden;
-    height: 0px;
-}
-
-.item img{
-    width: 7em;
-    opacity: 0.3;
-    -webkit-transition: all .4s;
-    -o-transition: all .4s;
-    transition: all .4s;
-}
-
-.item img:hover{
-    opacity: 1;
-    cursor: pointer;
-}
-
-.center img{
-    opacity: 1 !important;
-}
-
-.center::after{
-    content: '';
-    position: absolute;
-    bottom: 0rem;
-    left: 0rem;
-    right: 0rem;
-    height: 98%;
-    z-index: -1;
-    background-image: url('../img/circle.svg');
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.owl-carousel .nav-btn{
-    position: absolute;
-    cursor: pointer;
-    top: 50px !important;
-}
-
-.nav-btn img{
-    width: 2em;
-}
-
-.owl-carousel .owl-prev.disabled,
-.owl-carousel .owl-next.disabled{
-    pointer-events: none;
-    opacity: 0.2;
-}
-
-.owl-carousel .prev-slide{
-    transform: rotate(-180deg);
-    opacity: 0.5;
-    left: 100px;
-}
-
-.owl-carousel .next-slide{
-    opacity: 0.5;
-    right: 100px;
-}
-
-.owl-carousel .prev-slide:hover,.next-slide:hover{
-    opacity: 1;
-}
-  
-  
 
 @media screen and (max-width: 793px) {
 
@@ -452,20 +267,10 @@ ul.show{
     .menu_items li a{
         font-size: 2em;
     }
-    
-    #skills{
-        flex-direction:column-reverse;
-    }
 
-    #card{
-        flex-direction: column;
-        width:90vw;
-        height: 75vh;
-    }
-
-    #card_content{
-        flex-direction: column-reverse;
+    #home_background{
+        background-position: 68%;
+        background-repeat: no-repeat;
     }
 }
-
 

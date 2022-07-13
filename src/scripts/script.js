@@ -1,6 +1,18 @@
-
-
 $(document).ready(function(){
+
+    /* TRANSICIÓN ENTRE PÁGINAS SUAVE */
+
+    $("body").css("display", "none");
+    $("body").fadeIn(2000);
+    $("a.transition").click(function(event){
+        event.preventDefault();
+        linkLocation = this.href;
+        $("body").fadeOut(2000, redirectPage);      
+    });
+         
+    function redirectPage() {
+        window.location = linkLocation;
+    }
 
     /* MENÚ HAMBURGUESA */
 
@@ -49,10 +61,15 @@ $(document).ready(function(){
      $owl.trigger('to.owl.carousel', [$(this).data( 'position' ), $speed] );
     });
 
-    $(".item").on('click', function(e){   
-        e.preventDefault();
-        var skill_value = $(this).data('value');
-        $('#card_content').animate({'opacity':'0.0'}, 1000, function (){
+    var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            /* console.log(mutation); */
+          if (mutation.attributeName === "class") {
+            var $target = $(mutation.target);
+            if ($target.hasClass("center")) {
+                
+                var skill_value = $target.children().data('value');
+                $('#card_content').animate({'opacity':'0.0'}, 500, function (){
 
             $.ajax({
                 url : 'pages/select.php',
@@ -66,21 +83,32 @@ $(document).ready(function(){
                      data.forEach(element => {
                         $("#card_content").html(
                             '<div id="profile">'+
-                                '<div id="img_skill"><img src="'+ element.img + '"></div>'+
-                                    '<h1>'+ element.nombre +'</h1>'+
-                                '</div>'+
-                            '<div id="description">'+
-                            '<p>'+ element.descripcion_control_1 +'<span><img src="'+ element.control_consola +'"></span> / <span><img src="'+ element.control_pc +'"></span>'+ element.descripcion_control_2 +' </p>'+
                             '<div id="description_img"><img src="'+ element.img_skill +'"></div>'+
+                            '</div>'+
+                            '<div id="description">'+
+                            '<div id="img_skill"><img src="'+ element.img + '"></div>'+
+                            '<h1>'+ element.nombre +'</h1>'+
+                            '<p>'+ element.descripcion_control_1 +'<span><img src="'+ element.control_consola +'"></span> / <span><img src="'+ element.control_pc +'"></span>'+ element.descripcion_control_2 +' </p>'+
                             '</div>'
                         )
-                        $('#card_content').animate({'opacity':'1.0'}, 1000);
+                        $('#card_content').animate({'opacity':'1.0'}, 500);
                     })
                 }
             }); 
 
         });
-        
+
+            }
+          }
+        });
+      });
+      
+    const elementToObserve = document.querySelector(".owl-stage");
+     
+    observer.observe(elementToObserve, {
+            attributes: true,
+            subtree: true,
+            childList: true
     });
 
 });

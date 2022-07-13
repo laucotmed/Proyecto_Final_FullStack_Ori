@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="src/style/owl.theme.default.min.css">
 
   <!-- Título del sitio -->
-  <title>Ori and the Blind Forest</title>
+  <title>Ori and the Blind Forest - Skills</title>
 
 </head>
 <body>
@@ -32,10 +32,10 @@
   <!--  MENÚ PRINCIPAL -->
   <nav class="menu">
     <!-- Logo -->
-    <div id="menu_logo"><a href="index.php"><img src="src/img/logo.png" alt="Ori and the Blind Forest Logo.png"></a></div>
+    <div id="menu_logo"><a href="index.php" class="transition"><img src="src/img/logo.png" alt="Ori and the Blind Forest Logo.png"></a></div>
 
-    <!-- Menú hamburguesa que se mostrará cuando el tamaño sea lo suficientemente pequeño, formado por tres líneas en span -->
-    <div id="burger_menu">
+   <!-- Menú hamburguesa que se mostrará cuando el tamaño sea lo suficientemente pequeño, formado por tres líneas en span -->
+   <div id="burger_menu">
       <span class="burger-line"></span>
       <span class="burger-line"></span>
       <span class="burger-line"></span>
@@ -43,9 +43,9 @@
         
     <!-- Links a las distintas páginas de la web -->
     <ul class="menu_items">
-      <li class="menu_item"><a href="story.html">Story</a></li>
-      <li class="menu_item"><a href="characters.html">Characters</a></li>
-      <li class="menu_item active"><a href="skills.html">Skills</a></li>
+      <li class="menu_item"><a href="story.html" class="transition">Story</a></li>
+      <li class="menu_item"><a href="characters.html" class="transition">Characters</a></li>
+      <li class="menu_item active"><a href="skills.php" class="transition">Skills</a></li>
     </ul>
   </nav>
 
@@ -71,12 +71,13 @@
 <div id="card">
       <div id="card_content">
       <div id="profile">
+        <div id="description_img"><img src="src/img/skills/SpiritFlame2.png" alt="SpiritFlame2.png"></div>
+      </div>
+      <div id="description">
         <div id="img_skill"><img src="src/img/skills/SpiritFlame.png" alt="SpiritFlame.png"></div>
         <h1>Spirit Flame</h1>
-      </div>
-      <div id="description"> 
         <p>Tap <span><img src="src/img/controls/SWButtonX.png"  alt="SWButtonX.png"></span> / <span><img src="src/img/controls/MouseButtonRight.png" alt="MouseButtonRight.png"></span> repeatedly to use the Spirit Flame orb and quickly attack enemies even if they are some distance away.</p>
-        <div id="description_img"><img src="src/img/skills/SpiritFlame2.png" alt="SpiritFlame2.png"></div>
+        
       </div>
       </div>
     </div>
