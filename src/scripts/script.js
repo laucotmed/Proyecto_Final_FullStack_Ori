@@ -44,15 +44,18 @@ $(document).ready(function(){
      navText:["<div class='nav-btn prev-slide'><img src='./src/img/arrow.png' alt='next_arrow.png'></div>","<div class='nav-btn next-slide'><img src='./src/img/arrow.png' alt='next_arrow.png'></div>"],
      dots: false,
      responsive: {
-      0: {
-          items: 1
-      },
-      600: {
+        0: {
+            items: 1
+        },
+        650: {
+            items: 3
+        },
+        900: {
           items: 5
-      },
-      1000: {
-          items: 7
-      }}
+      }, 
+        1300: {
+            items: 7
+        }}
    });
    
    $(document).on('click', '.owl-item>div', function() {
@@ -74,12 +77,13 @@ $(document).ready(function(){
             $.ajax({
                 url : 'pages/select.php',
                 method : 'POST',
+                dataType: "json",
                 data : {
                     'skill_value' : skill_value
                 },
                 success:function(data){
                      console.log(data);
-                     data = JSON.parse(data);
+                     /* data = JSON.parse(data); */
                      data.forEach(element => {
                         $("#card_content").html(
                             '<div id="profile">'+

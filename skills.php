@@ -15,7 +15,8 @@
   <link rel="shortcut icon" type="image/x-icon" href="src/img/ori.ico">
 
   <!-- Enlaces a la hoja de estilo, al script y al CDN de Jquery-->
-  <link rel="stylesheet" href="src/style/style.css">
+  <link rel="stylesheet" href="src/style/general.css">
+  <link rel="stylesheet" href="src/style/skills.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="src/scripts/owl.carousel.min.js"></script>
 
