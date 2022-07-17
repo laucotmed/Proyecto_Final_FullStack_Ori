@@ -40,22 +40,32 @@ html, body{
 }
 
 /* BACKGROUND */
+/* agregamos un degradado al body. Webkit para compatibilidad */
 
 body{
+    background: -o-linear-gradient(257.99deg, #0D0D2E 7.77%, #0A184B 47.18%, #2C0E31 92.33%);
     background: linear-gradient(192.01deg, #0D0D2E 7.77%, #0A184B 47.18%, #2C0E31 92.33%);
     background-repeat: no-repeat;
 }
 
 /* MENÚ PRINCIPAL */
 
-/* le damos un ancho de 100% al menú para que ocupe toda la parte de arriba de nuestra web, y con display flex alineamos los elementos del menú (logo y links a otras páginas). Ajustamos también el tamaño del logo y le añadimos un efecto de hover para indicarle al usuario que puede hacer click encima */
+/* le damos un ancho de 100% al menú para que ocupe toda la parte de arriba de nuestra web, y con display flex alineamos los elementos del menú (logo y links a otras páginas). Ajustamos también el tamaño del logo (cálculo con clamp para hacerlo fluido) y le añadimos un efecto de hover para indicarle al usuario que puede hacer click encima. Webkit para compatibilidad. */
 
 .menu{
     width: 100%;
+    display:-webkit-box;
+    display:-ms-flexbox;
     display:flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content:space-around;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-pack:distribute;
+        justify-content:space-around;
 }
 
 #menu_logo a img{
@@ -168,7 +178,7 @@ body{
     display: none;
 }
 
-/* con esta clase creamos las líneas que forman el icono de hamburguesa del menú usando el mismo gráfico que las líneas que subrayan los elementos del menú, añadiendo una pequeña transición para cuando se haga clic y se realice el cambio */
+/* con esta clase creamos las líneas que forman el icono de hamburguesa del menú usando el mismo gráfico que las líneas que subrayan los elementos del menú, añadiendo una pequeña transición para cuando se haga clic y se realice el cambio. Webkit para evitar problemas de compatibilidad con la animación */
 
 .burger-line {
     border-radius: 15px;
@@ -179,25 +189,37 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    -webkit-transition: all .5s;
+    -o-transition: all .5s;
     transition: all .5s;
     margin-top: 10px;
     margin-left: 1rem;
 }
 
-/* estas tres clases son las que serán añadidas a las líneas correspondientes y harán que las tres líneas se vuelvan una X al hacer clic sobre el icono del menú hamburguesa con Jquery */
+/* estas tres clases son las que serán añadidas a las líneas correspondientes y harán que las tres líneas se vuelvan una X al hacer clic sobre el icono del menú hamburguesa con Jquery. Webkit para compatibilidad. */
 
 .primera {
-    transform: translateY(8px) rotate(45deg);
+    -webkit-transform: translateY(8px) rotate(45deg);
+        -ms-transform: translateY(8px) rotate(45deg);
+            transform: translateY(8px) rotate(45deg);
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
     transition: all 0.4s;
 }
 
 .segunda {
     opacity: 0;
+    -webkit-transition: all 0s;
+    -o-transition: all 0s;
     transition: all 0s;
 }
 
 .tercera {
-    transform: translateY(-20px) rotate(-45deg);
+    -webkit-transform: translateY(-20px) rotate(-45deg);
+        -ms-transform: translateY(-20px) rotate(-45deg);
+            transform: translateY(-20px) rotate(-45deg);
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
     transition: all 0.4s;
 }
 
@@ -214,14 +236,15 @@ ul.show{
 
 @media screen and (max-width: 793px) {
 
-    /* modificamos la disposición de los elementos del menú con space-around y agregamos un pequeño padding al menú.  */
+    /* modificamos la disposición de los elementos del menú con space-around y agregamos un pequeño padding al menú. Webkit para compatibilidad */
 
     .menu{
-        justify-content: space-around;
+        -ms-flex-pack: distribute;
+            justify-content: space-around;
         padding: 0.8em 2em;
     }
 
-     /* le ponemos una posición fija al contenedor de los elementos del menú porque queremos hacer una pequeña animación en la que salgan desde arriba. También cambiamos la dirección del flex-direction a column para que los elementos del menú salgan en columna y ocupando toda la pantalla. Webkit para compatibilidad */
+    /* le ponemos una posición fija al contenedor de los elementos del menú porque queremos hacer una pequeña animación en la que salgan desde arriba. También cambiamos la dirección del flex-direction a column para que los elementos del menú salgan en columna y ocupando toda la pantalla. Webkit para compatibilidad */
 
     .menu_items {
       position: fixed;
@@ -241,13 +264,20 @@ ul.show{
       z-index: 10;
     }
 
-    /* cambiamos el cursor para indicarle al usuario que se puede hacer click en este elemento para desplegar el menú y con display:flex y flex-direction: column nos aseguramos que las líneas se muestran en columna. Cambiamos z-index del "botón" del menú hamburguesa y del logo para que se les pueda hacer click cuando despliegas el menú */
+    /* cambiamos el cursor para indicarle al usuario que se puede hacer click en este elemento para desplegar el menú y con display:flex y flex-direction: column nos aseguramos que las líneas se muestran en columna. Cambiamos z-index del "botón" del menú hamburguesa y del logo para que se les pueda hacer click cuando despliegas el menú. Webkit para compatibilidad */
     
     #burger_menu {
         cursor: pointer;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        justify-content: center;
-        flex-direction: column;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
         z-index: 11;
     }
 
@@ -263,7 +293,4 @@ ul.show{
         font-size: 2em;
     }
 
-   
 }
-
-

@@ -1,35 +1,51 @@
 /* TARJETA "SKILLS"*/
 
-/* en esta especie de "tarjeta" se visualizarán los datos de la base de datos. Comenzamos por darle display flex y centrar los elementos (tarjeta y slider) con align-items y justify-content en este contenedor padre*/
+/* en esta especie de "tarjeta" se visualizarán los datos de la base de datos. Comenzamos por darle display flex y centrar los elementos (tarjeta y slider) con align-items y justify-content en este contenedor padre. Webkit para compatibilidad*/
 
 #skills{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     height: 100%;
     min-height: 100%;
 }
 
 /* TARJETA */
 
-/* con esto le damos estilo a la tarjeta (tamaño, fondo, centrar elementos con display:flex). Para el título h1 empleamos otro cálculo realizado con clamp y calc para conseguir que el tamaño del texto se vaya adaptando de forma más fluida según el tamaño del navegador.  */
+/* con esto le damos estilo a la tarjeta (tamaño, fondo, centrar elementos con display:flex). Para el título h1 empleamos otro cálculo realizado con clamp y calc para conseguir que el tamaño del texto se vaya adaptando de forma más fluida según el tamaño del navegador. Webkit para compatibilidad  */
 
 #card{
     background-image: url(../img/card_bg.png);
     background-repeat: no-repeat;
     background-size: 100% 100%;
-     width:70vw;
+    width:70vw;
     height: 68vh;
-    flex-grow: 1;
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
     padding: 2rem;
     padding-bottom: 3rem;
 }
 
 #card_content{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     height: 100%;
 }
 
@@ -38,8 +54,10 @@
     color: var(--text-white);
     text-align: center;
     font-size: clamp(1.5rem, calc(1.5rem + ((1vw - 0.48rem) * 1.3889)), 2.5rem);
-    margin-block-end: 0;
-    margin-block-start: 0;
+    -webkit-margin-after: 0;
+            margin-block-end: 0;
+    -webkit-margin-before: 0;
+            margin-block-start: 0;
     font-variant: small-caps;
 }
 
@@ -66,14 +84,23 @@
     background-size: cover;
 }
 
-/* le damos un tamaño a la parte de la descripción de la tarjeta y display:flex con flex-direction:column para que los elementos salgan en columna. Volvemos a usar el cálculo con clamp para hacer que el texto se adapte de forma fluida al tamaño del navegador y modificamos los márgenes que tiene por defecto. */
+/* le damos un tamaño a la parte de la descripción de la tarjeta y display:flex con flex-direction:column para que los elementos salgan en columna. Volvemos a usar el cálculo con clamp para hacer que el texto se adapte de forma fluida al tamaño del navegador y modificamos los márgenes que tiene por defecto. Webkit para compatibilidad*/
 
 #description {
     width: 40%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 
 #description p{
@@ -81,10 +108,14 @@
     color: var(--text-white);
     font-size: clamp(1.5rem, calc(1.5rem + ((1vw - 0.48rem) * 2.0833)), 3rem);
     font-variant: small-caps;
-    margin-block-start: 0.1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
+    -webkit-margin-before: 0.1em;
+            margin-block-start: 0.1em;
+    -webkit-margin-after: 1em;
+            margin-block-end: 1em;
+    -webkit-margin-start: 0px;
+            margin-inline-start: 0px;
+    -webkit-margin-end: 0px;
+            margin-inline-end: 0px;
 }
 
 /* usamos span para incluir las imágenes de los iconos de los controles asociados con cada skill y poder intercalarlos con la descripción. Con vertical-align:middle nos aseguramos que las imágenes están centradas de forma vertical al texto */
@@ -106,7 +137,6 @@
     width: 100%;
     height: auto;
     background-color: transparent;
-    
 }
 
 #description_img img{
@@ -127,10 +157,13 @@
 }
 
 #profile{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
 }
 
 /* SLIDER */
+
 /* modificación del estilo del carrusel del plugin de JQuery "Owl Carousel.js" para adaptarlo a las necesidades del proyecto. Comenzamos por el contenedor padre del slider/carrusel, indicando su tamaño, centrar el elemento al crearse el margen automáticamente y equitativamente entre ambos lados (derecho e izquierdo) */
 
 .carousel-wrap {
@@ -144,10 +177,15 @@
     padding: 0 10em;
 }
 
+/* esto hace que el div padre donde se encuentran los botones para ir al siguiente o anterior elemento no ocupe espacio */
+
 .owl-carousel .owl-nav{
     overflow: hidden;
     height: 0px;
+    margin-top: 0px;
 }
+
+/* con esto hacemos que el elemento que esté en el centro esté opaco y con un círculo "pintado" para indicarle al usuario que es la opción seleccionada y de la que se van a conseguir los datos */
 
 .item img{
     width: 9em;
@@ -179,6 +217,8 @@
     background-size: cover;
 }
 
+/* lo siguiente hace que las imágenes personalizadas que usamos como flechas actúen como los botones de siguiente y anterior y que estén colocadas correctamente. Webkit para compatibilidad*/
+
 .owl-carousel .nav-btn{
     position: absolute;
     cursor: pointer;
@@ -189,14 +229,16 @@
     width: 2em;
 }
 
-.owl-carousel .owl-prev.disabled,
+/* .owl-carousel .owl-prev.disabled,
 .owl-carousel .owl-next.disabled{
     pointer-events: none;
     opacity: 0.2;
-}
+} */
 
 .owl-carousel .prev-slide{
-    transform: rotate(-180deg);
+    -webkit-transform: rotate(-180deg);
+        -ms-transform: rotate(-180deg);
+            transform: rotate(-180deg);
     opacity: 0.5;
     left: 100px;
     /* position: relative; */
@@ -212,21 +254,17 @@
     opacity: 1;
 }
 
-.owl-theme .owl-nav {
-    margin-top: 0;
-    height: 0;
-}
 
-
-.owl-carousel .owl-wrapper {
+/* .owl-carousel .owl-wrapper {
     display: flex !important;
-}
-.owl-carousel .owl-item img {
+} */
+
+/* .owl-carousel .owl-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     max-width: initial;
-}
+} */
 
 /* .owl-carousel .owl-stage { display: flex; align-items: center; } */
 
@@ -256,6 +294,7 @@
 }  */
 
 /* BREAKPOINT IPAD */
+/* modificamos el tamaño de la tarjeta para que se ajuste mejor al tamaño del iPad */
 
 @media screen and (max-width: 830px) {
 
@@ -265,23 +304,36 @@
         min-height: 100%;
     }
 }
-  
+
+
+/* BREAKPOINT MÓVIL */
+/* para móvil cambiamos la dirección de los flex para poner los contenidos en columna y modificar el tamaño de algunos elementos para ajustarlos mejor a las dimensiones de móvil. Webkit para compatibilidad */
 
 @media screen and (max-width: 793px) { 
     
     #skills{
-        flex-direction:column-reverse;
+        -webkit-box-orient:vertical;
+        -webkit-box-direction:reverse;
+            -ms-flex-direction:column-reverse;
+                flex-direction:column-reverse;
     }
 
     #card{
-        flex-direction: column;
-        width:90%;
-        min-height: 100%;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        /* width:90%;
+        min-height: 100%; */
     }
 
     #card_content{
-        flex-direction: column-reverse;
-        justify-content: space-around;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: reverse;
+            -ms-flex-direction: column-reverse;
+                flex-direction: column-reverse;
+        -ms-flex-pack: distribute;
+            justify-content: space-around;
         /* min-height: 100%; */
     }
 

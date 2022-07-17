@@ -1,22 +1,17 @@
 /* MODIFICACIONES DEL ESTILO GENERAL PARA EL INDEX */
 
+/* le damos un color al html para que cuando se produzca la transición de una página a otra, el cambio sea más suave ya que ambas páginas tendrán el mismo color al ocultar y volver hacer aparecer el body en el script */
+
 html{
     background-color: white;
    /*  background: linear-gradient(192.01deg, #0D0D2E 7.77%, #0A184B 47.18%, #2C0E31 92.33%); */
+  /*  background: -o-linear-gradient(257.99deg, #0D0D2E 7.77%, #0A184B 47.18%, #2C0E31 92.33%); */
    /*  background-repeat: no-repeat; */
-}
-
-/* le quitamos el margin y el padding al body para evitar bordes blancos indeseados, y le damos una altura y anchura de mínimo 100% para que ocupen toda la pantalla*/
-html, body{
-    margin: 0;
-    padding: 0;
-    min-height: 100%;
-    min-width: 100%;
 }
 
 /* MENÚ PRINCIPAL */
 
-/* en este caso queremos le damos un ancho de 100% al menú para que ocupe toda la parte de arriba de nuestra web, y con display flex alineamos los elementos del menú (logo y links a otras páginas). Ajustamos también el tamaño del logo  */
+/* en este caso queremos que el menú esté fijo en la parte de arriba de nuestra web y colocarle un ::after con un efecto de "brochazo" para que destaquen las letras sobre la ilustración que ponemos de fondo */
 
 .menu{
     position: fixed;
@@ -37,11 +32,13 @@ html, body{
 }
 
 /* HOME BACKGROUND */
+/* fondo que colocamos en cierta posición para que al llegar a una resolución más pequeña se vaya centrando en la parte de la ilustración donde se encuentran los dos personajes del juego */
+
 #home_background{
     min-height: 100vh;
     min-width: 100vw;
     background-image: url(../img/home_background.jpg);
-    background-position: 70%;
+    background-position: 70% 20%;
     background-repeat: no-repeat;
     background-size: cover;
 }

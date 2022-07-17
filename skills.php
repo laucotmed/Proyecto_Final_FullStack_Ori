@@ -22,12 +22,13 @@
 
   <!-- Owl Carousel Stylesheets -->
   <link rel="stylesheet" href="src/style/owl.carousel.min.css">
-  <link rel="stylesheet" href="src/style/owl.theme.default.min.css">
+  <!-- <link rel="stylesheet" href="src/style/owl.theme.default.min.css"> -->
 
   <!-- Título del sitio -->
   <title>Ori and the Blind Forest - Skills</title>
 
 </head>
+
 <body>
    
   <!--  MENÚ PRINCIPAL -->
@@ -35,8 +36,8 @@
     <!-- Logo -->
     <div id="menu_logo"><a href="index.php" class="transition"><img src="src/img/logo.png" alt="Ori and the Blind Forest Logo.png"></a></div>
 
-   <!-- Menú hamburguesa que se mostrará cuando el tamaño sea lo suficientemente pequeño, formado por tres líneas en span -->
-   <div id="burger_menu">
+    <!-- Menú hamburguesa que se mostrará cuando el tamaño sea lo suficientemente pequeño, formado por tres líneas en span -->
+    <div id="burger_menu">
       <span class="burger-line"></span>
       <span class="burger-line"></span>
       <span class="burger-line"></span>
@@ -50,39 +51,50 @@
     </ul>
   </nav>
 
-  <!-- TARJETA DATOS HABILIDADES -->
+  <!-- SECCIÓN HABILIDADES -->
+  <!-- En esta sección estarán tanto la tarjeta con los datos de la habilidad como el slider para escoger dichas habilidades y ver sus datos -->
 
   <section id="skills">
 
-    <!-- Tarjeta con icono, título, descripción e imagen con cada habilidad-->
+    <!-- Abrimos PhP para realizar un try y catch para incluir el código que se encuentra en connection.php y select.php y recoger cualquier error que se pueda producir con la conexión con la base de datos-->
 
     <?php
+      
       try{
-      /* con esto incluimos el código que se encuentra en connection.php y realizamos un echo para comprobar que la conexión es correcta */
-      require_once "db/connection.php";
-      /* echo "Conectado a la base de datos".$dbname." en el host ".$host; */
 
-      include "pages/select.php";
-    
-  }catch(PDOException $error){
-    die("No se ha podido acceder a la base de datos".$dbname.":".$error->getMessage()); //función flecha para acceder al método get Message
-}
+        require_once "db/connection.php";
+        include "pages/select.php";
+   
+      }catch(PDOException $error){
+
+        die("No se ha podido acceder a la base de datos".$dbname.":".$error->getMessage());
+
+      }
     ?>
 
-<div id="card">
+    <!-- TARJETA -->
+    <!-- Tarjeta con icono, título, descripción e imagen de cada habilidad. El contenido de #card_content será alterado por código-->
+    
+    <div id="card">
       <div id="card_content">
-      <div id="profile">
-        <div id="description_img"><img src="src/img/skills/SpiritFlame2.png" alt="SpiritFlame2.png"></div>
-      </div>
-      <div id="description">
-        <div id="img_skill"><img src="src/img/skills/SpiritFlame.png" alt="SpiritFlame.png"></div>
-        <h1>Spirit Flame</h1>
-        <p>Tap <span><img src="src/img/controls/SWButtonX.png"  alt="SWButtonX.png"></span> / <span><img src="src/img/controls/MouseButtonRight.png" alt="MouseButtonRight.png"></span> repeatedly to use the Spirit Flame orb and quickly attack enemies even if they are some distance away.</p>
-        
-      </div>
+
+        <div id="profile">
+          <div id="description_img"><img src="src/img/skills/SpiritFlame2.png" alt="SpiritFlame2.png"></div>
+        </div>
+
+        <div id="description">
+
+          <div id="img_skill"><img src="src/img/skills/SpiritFlame.png" alt="SpiritFlame.png"></div>
+          <h1>Spirit Flame</h1>
+          <p>Tap <span><img src="src/img/controls/SWButtonX.png"  alt="SWButtonX.png"></span> / <span><img src="src/img/controls/MouseButtonRight.png" alt="MouseButtonRight.png"></span> repeatedly to use the Spirit Flame orb and quickly attack enemies even if they are some distance away.</p>
+
+        </div>
       </div>
     </div>
 
+    <!--  SLIDER -->
+    <!-- Aquí es donde colocamos el slider del plugin Owl Carousel 2, con todos los elementos que servirán de "botón" para traer los datos. Le colocamos un data-value a cada item que se corresponde con el id que tiene cada habilidad en la base de datos -->
+   
     <div class="carousel-wrap">
       <div class="slider owl-carousel owl-theme">
         <div class="item" data-value="1"><img src="src/img/skills/SpiritFlame.png" alt="SpiritFlameIcon.png"></div>
@@ -100,6 +112,8 @@
     </div>
 
   </section>
+
+  <!-- Enlace al script-->
   <script src="src/scripts/script.js"></script>
 </body>
 </html>
