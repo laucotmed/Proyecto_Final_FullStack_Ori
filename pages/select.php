@@ -5,10 +5,10 @@ if(isset($_POST["skill_value"])){
     /* echo $_POST["skill_value"]; */
    
    try{
-      /*  include "../db/pdoconfig.php";
-        $connection = new PDO("mysql:host=".$host.";dbname=".$dbname,$username,$password,$options); */
+       include "../db/pdoconfig.php";
+        $connection = new PDO("mysql:host=".$host.";dbname=".$dbname,$username,$password,$options);
 
-        include "../db/connection.php";
+        /* include "../db/connection.php"; */
 
         $id_skill = $_POST["skill_value"];
 
@@ -22,14 +22,6 @@ if(isset($_POST["skill_value"])){
         echo $error;
     }
 
-}else{
-   /*  try{
-
-        $skill = $connection->query('SELECT * FROM skills WHERE skills.id="1"')->fetchAll();
-
-    }catch(Exception $error){
-        echo $error;
-    } */
 }
 
 ?>
