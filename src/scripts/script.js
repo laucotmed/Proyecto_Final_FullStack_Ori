@@ -88,13 +88,13 @@ $(document).ready(function(){
             $.ajax({
                 url : 'pages/select.php',
                 method : 'POST',
-                dataType: "json", 
+                /* dataType: "json",  */
                 data : {
                     'skill_value' : skill_value
                 },
                 success:function(data){
                      console.log(data);
-                     /* data = JSON.parse(data); */
+                     data = JSON.parse(data);
                      data.forEach(element => {
                         $("#card_content").html(
                             '<div id="profile">'+
