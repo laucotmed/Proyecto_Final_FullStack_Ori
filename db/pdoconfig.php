@@ -1,9 +1,9 @@
 <?php
 
-$host = "localhost";
+$host = "oliadkuxrl9xdugh.chr7pe7iynqr.eu-west-1.rds.amazonaws.com";
 $dbname = "proyectofinal";
-$username = "laura";
-$password = "123";
+$username = "kvsaritajkavi5ln";
+$password = "vh8wmyq9oews41ip";
 
 $options = [
     \PDO::ATTR_ERRMODE  => \PDO::ERRMODE_EXCEPTION,
