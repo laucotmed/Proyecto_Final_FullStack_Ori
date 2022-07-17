@@ -93,9 +93,9 @@ $(document).ready(function(){
                     'skill_value' : skill_value
                 },
                 success:function(data){
-                     console.log(data);
-                     data = JSON.parse(data);
-                     data.forEach(element => {
+                    console.log(data);
+                    data = JSON.parse(data);
+                    data.forEach(element => {
                         $("#card_content").html(
                             '<div id="profile">'+
                             '<div id="description_img"><img src="'+ element.img_skill +'"></div>'+
@@ -108,6 +108,9 @@ $(document).ready(function(){
                         )
                         $('#card_content').animate({'opacity':'1.0'}, 500);
                     })
+                },
+                error: function(response) {
+                    console.log(response);
                 }
             }); 
 
