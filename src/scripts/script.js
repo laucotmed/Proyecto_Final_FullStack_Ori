@@ -27,9 +27,25 @@ $(document).ready(function(){
         $("#burger_menu>span:nth-child(2)").toggleClass("segunda")
         $("#burger_menu>span:nth-child(3)").toggleClass("tercera")
 
-        //Despliego del menú en móvil añadiendo la clase CSS show. Usamos stop() para evitar que se forme una cola de acciones si se hace clics muy rápidamente y seguidos
+        //Despliego del menú en móvil añadiendo la clase CSS show. En caso de hacer clic en la "X", se desactivaría, cerrando el menú. Usamos stop() para evitar que se forme una cola de acciones si se hace clics muy rápidamente y seguidos.
         $(".menu_items").stop()
         $(".menu_items").toggleClass("show")
+
+        /*Hacemos lo mismo con la clase "overflow-menu", que evitará que podamos movernos por la web al abrir el menú. */
+         $('body').toggleClass("overflow-menu");
+    })
+
+    /*Creamos una función al hacer clic en cualquiera de los elementos del menú. Esta revertirá las clases activadas al hacer clic al "menú hamburguesa".
+    De esta forma nos aseguramos que al hacer clic ya sea en el menú para cerrarlo o en cualquiera de sus elementos, todo vuelva a su lugar.
+    Esto SOLO funcionará si el menú ya tiene la clase "overflow-menu", de lo contrario, evitaría poder scrollear al usar el menú en Desktop.*/
+    $(".menu_item").click(function(){
+        if ($('body').hasClass("overflow-menu")){
+            $('body').toggleClass("overflow-menu");
+            $(".menu_items").toggleClass("show");
+            $("#burger_menu>span:nth-child(1)").toggleClass("primera");
+            $("#burger_menu>span:nth-child(2)").toggleClass("segunda");
+            $("#burger_menu>span:nth-child(3)").toggleClass("tercera");
+        }
     })
       
    /*  SLIDER */
@@ -88,14 +104,14 @@ $(document).ready(function(){
             $.ajax({
                 url : 'pages/select.php',
                 method : 'POST',
-                /* dataType: "json",  */
+                dataType: "json", 
                 data : {
                     'skill_value' : skill_value
                 },
                 success:function(data){
-                    console.log(data);
-                    data = JSON.parse(data);
-                    data.forEach(element => {
+                     console.log(data);
+                     /* data = JSON.parse(data); */
+                     data.forEach(element => {
                         $("#card_content").html(
                             '<div id="profile">'+
                             '<div id="description_img"><img src="'+ element.img_skill +'"></div>'+
@@ -108,9 +124,6 @@ $(document).ready(function(){
                         )
                         $('#card_content').animate({'opacity':'1.0'}, 500);
                     })
-                },
-                error: function(response) {
-                    console.log(response);
                 }
             }); 
 
