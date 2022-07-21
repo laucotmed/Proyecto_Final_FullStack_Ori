@@ -1,3 +1,11 @@
+/* le quitamos el margin y el padding al body para evitar bordes blancos indeseados, y le damos una altura y anchura de mínimo 100% para que ocupen toda la pantalla*/
+html,
+body {
+    height: 100%;
+    width: 100%;
+    overflow-y: overlay;
+}
+
 /* Le colocamos al body un fondo para que este ocupe toda la pantalla y cambiamos el color del fondo del menú a negro para que se integre mejor */
 
 body {

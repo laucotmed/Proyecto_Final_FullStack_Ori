@@ -1,6 +1,12 @@
+/* le quitamos el margin y el padding al body para evitar bordes blancos indeseados, y le damos una altura y anchura de mínimo 100% para que ocupen toda la pantalla*/
+html,
+body {
+    min-height: 100%;
+    min-width: 100%;
+    /* overflow-y: overlay; */
+}
+
 /* PERSONAJES */
-
-
 
 #characters {
     display: -webkit-box;

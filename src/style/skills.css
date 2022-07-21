@@ -29,7 +29,6 @@ body {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    /*  max-height: 88%; */
     height: 100%;
 }
 
@@ -183,7 +182,6 @@ body {
     width: 85vw;
     margin: auto;
     position: relative;
-    /* height: 8rem; */
 }
 
 .slider {
@@ -242,25 +240,17 @@ body {
     width: 2em;
 }
 
-/* .owl-carousel .owl-prev.disabled,
-.owl-carousel .owl-next.disabled{
-    pointer-events: none;
-    opacity: 0.2;
-} */
-
 .owl-carousel .prev-slide {
     -webkit-transform: rotate(-180deg);
     -ms-transform: rotate(-180deg);
     transform: rotate(-180deg);
     opacity: 0.5;
     left: 100px;
-    /* position: relative; */
 }
 
 .owl-carousel .next-slide {
     opacity: 0.5;
     right: 100px;
-    /* position: relative; */
 }
 
 .owl-carousel .prev-slide:hover,
@@ -268,57 +258,20 @@ body {
     opacity: 1;
 }
 
-
-/* .owl-carousel .owl-wrapper {
-    display: flex !important;
-} */
-
-/* .owl-carousel .owl-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    max-width: initial;
-} */
-
-/* .owl-carousel .owl-stage { display: flex; align-items: center; } */
-
-/* .owl-nav .owl-next, .owl-nav .owl-prev {
-    position: absolute;
-    top: 38%;
-    transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-}
-
-.owl-nav .owl-next {
-    right: 0;
-    display: flex;
-    margin-right: 2%;
-    font-size: 25px !important;
-}
-
-.owl-next:hover{
-    background: transparent;
-}
-
-.owl-nav .owl-prev{
-    left: 0;
-    display: flex;
-    margin-left: 2%;
-    font-size: 25px !important;
-}  */
-
 /* BREAKPOINT IPAD */
-/* modificamos el tamaño de la tarjeta para que se ajuste mejor al tamaño del iPad */
+/* modificamos el tamaño de la tarjeta para que se ajuste mejor al tamaño del iPad cuando está en modo vertical */
 
-@media screen and (max-width: 830px) {
+@media only screen and (min-device-width: 765px) and (max-device-width: 930px) and (orientation: portrait) {
 
     #card_content {
         -webkit-box-orient: vertical;
         -webkit-box-direction: reverse;
         -ms-flex-direction: column-reverse;
         flex-direction: column-reverse;
-        /* -ms-flex-pack: distribute;
-            justify-content: space-evenly; */
+    }
+
+    #img_skill img {
+        width: 10rem;
     }
 
     #description {
@@ -327,11 +280,17 @@ body {
 
     #description p {
         width: 90%;
+        font-size: 2.1em;
         -webkit-margin-before: 1rem;
         margin-block-start: 1rem;
         margin-block-end: 0rem;
         -webkit-margin-start: 0rem;
     }
+
+    #description_img img {
+        width: 30rem;
+    }
+
 }
 
 
@@ -342,6 +301,8 @@ body {
 
     html,
     body {
+        width: initial;
+        height: initial;
         min-width: 100%;
         min-height: 100%;
     }
@@ -359,7 +320,6 @@ body {
         -ms-flex-direction: column;
         flex-direction: column;
         width: 90%;
-        /* min-height: 100%;  */
     }
 
     #card_content {
@@ -369,7 +329,6 @@ body {
         flex-direction: column-reverse;
         -ms-flex-pack: distribute;
         justify-content: space-around;
-        /* min-height: 100%; */
     }
 
     #profile {
