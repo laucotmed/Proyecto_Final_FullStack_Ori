@@ -1,31 +1,44 @@
-body{
+/* Le colocamos al body un fondo para que este ocupe toda la pantalla y cambiamos el color del fondo del menú a negro para que se integre mejor */
+
+body {
     background-image: url(../img/story_background.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-.menu{
+.menu {
     background-color: black;
 }
 
-#story_background{
+/* display flex al contenedor padre de nuestro texto y vídeo. Webkit para compatibilidad */
+
+#story_background {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: space-evenly;
+    -ms-flex-pack: space-evenly;
     justify-content: space-evenly;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
 }
 
-#story_description{
+#story_description {
     width: 95%;
     margin-top: 2.5rem;
 }
 
-#story_description h1{
+#story_description h1 {
     font-size: clamp(3.8rem, calc(3.8rem + ((1vw - 0.48rem) * 1.6667)), 5rem);
 }
 
-#story_description p{
+#story_description p {
     background-image: url(../img/card_bg.png);
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -33,44 +46,48 @@ body{
     font-size: clamp(1.8rem, calc(1.8rem + ((1vw - 0.48rem) * 0.9722)), 2.5rem);
 }
 
-#video_centrado{
-   /*  height: 60vh; */
+/* para lograr tener el vídeo centrado y de cierto tamaño, empleamos dos divs, uno para situarlo en el centro gracias al display flex del padre y otro en el que es importante que la posición sea relativa para poder posicionar luego el vídeo con position:absolute y top:0, left:0 */
+
+#video_centrado {
+    /*  height: 60vh; */
     width: 90%;
     margin: 3rem;
     /* margin-top: 10rem; */
 }
 
 .container {
-    position:relative;
+    position: relative;
     width: 100%;
-    height:0;
+    height: 0;
     padding-bottom: 60%;
-    overflow:hidden;
+    overflow: hidden;
     border-radius: 20px;
     padding-top: 30px;
+    -webkit-box-shadow: 0 0 30px 1px rgba(255, 255, 255, 0.745);
     box-shadow: 0 0 30px 1px rgba(255, 255, 255, 0.745);
 }
 
-.container iframe, .video-container object, .video-container embed { 
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; 
+.container iframe,
+.video-container object,
+.video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 /* BREAKPOINT MÓVIL */
-/* para móvil cambiamos la dirección de los flex para poner los contenidos en columna y modificar el tamaño de algunos elementos para ajustarlos mejor a las dimensiones de móvil. Webkit para compatibilidad */
+/* para móvil cambiamos la posición del fondo para mejorar la legibilidad y añadimos un pequeño padding al texto */
 
-@media screen and (max-width: 793px) { 
+@media screen and (max-width: 793px) {
 
-    body{
+    body {
         background-position: right;
     }
 
-    #story_description p{
+    #story_description p {
         padding: 2rem;
     }
-    
-}
 
+}

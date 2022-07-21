@@ -2,7 +2,7 @@
 
 /* le damos un color al html para que cuando se produzca la transición de una página a otra, el cambio sea más suave ya que ambas páginas tendrán el mismo color al ocultar y volver hacer aparecer el body en el script */
 
-html{
+html {
     background-color: white;
 }
 
@@ -10,12 +10,12 @@ html{
 
 /* en este caso queremos que el menú esté fijo en la parte de arriba de nuestra web y colocarle un ::after con un efecto de "brochazo" para que destaquen las letras sobre la ilustración que ponemos de fondo */
 
-.menu{
+.menu {
     position: fixed;
     background-color: black;
 }
 
-.menu::after{
+.menu::after {
     content: '';
     position: absolute;
     bottom: -2.5rem;
@@ -31,7 +31,7 @@ html{
 /* HOME BACKGROUND */
 /* fondo que colocamos en cierta posición para que al llegar a una resolución más pequeña se vaya centrando en la parte de la ilustración donde se encuentran los dos personajes del juego */
 
-#home_background{
+#home_background {
     min-height: 100vh;
     min-width: 100vw;
     background-image: url(../img/home_background.jpg);

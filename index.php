@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <!-- Etiquetas meta sobre el sitio web -->
   <meta charset="UTF-8">
@@ -22,6 +23,7 @@
   <!-- Título del sitio -->
   <title>Ori and the Blind Forest</title>
 </head>
+
 <body>
   <!--  MENÚ PRINCIPAL -->
   <nav class="menu">
@@ -34,7 +36,7 @@
       <span class="burger-line"></span>
       <span class="burger-line"></span>
     </div>
-        
+
     <!-- Links a las distintas páginas de la web -->
     <ul class="menu_items">
       <li class="menu_item"><a href="story.html" class="transition">Story</a></li>
@@ -49,4 +51,5 @@
   <!-- Enlace al script-->
   <script src="src/scripts/script.js"></script>
 </body>
+
 </html>

@@ -1,10 +1,11 @@
 /* hacemos que el html y el body tengan una altura y anchura de 100% para que los elementos ocupen toda la pantalla*/
-html, body {
+html,
+body {
     width: 100%;
     height: 100%;
 }
 
-#container{
+#container {
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -14,21 +15,21 @@ html, body {
 
 /* en esta especie de "tarjeta" se visualizarán los datos de la base de datos. Comenzamos por darle display flex y centrar los elementos (tarjeta y slider) con align-items y justify-content en este contenedor padre. Webkit para compatibilidad*/
 
-#skills{
+#skills {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
     -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-   /*  max-height: 88%; */
+    -ms-flex-align: center;
+    align-items: center;
+    /*  max-height: 88%; */
     height: 100%;
 }
 
@@ -36,57 +37,57 @@ html, body {
 
 /* con esto le damos estilo a la tarjeta (tamaño, fondo, centrar elementos con display:flex). Para el título h1 empleamos otro cálculo realizado con clamp y calc para conseguir que el tamaño del texto se vaya adaptando de forma más fluida según el tamaño del navegador. Webkit para compatibilidad  */
 
-#card{
+#card {
     background-image: url(../img/card_bg.png);
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    width:80%;
+    width: 80%;
     height: 90%;
     -webkit-box-flex: 1;
-        -ms-flex-positive: 1;
-            flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
     padding: 2rem;
     padding-bottom: 3rem;
 }
 
-#card_content{
+#card_content {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-pack: distribute;
-        justify-content: space-evenly;
+    justify-content: space-evenly;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
     height: 100%;
 }
 
-#card_content h1{
+#card_content h1 {
     font-family: var(--title-font);
     color: var(--text-white);
     text-align: center;
     font-size: clamp(1.5rem, calc(1.5rem + ((1vw - 0.48rem) * 1.3889)), 2.5rem);
     -webkit-margin-after: 0;
-            margin-block-end: 0;
+    margin-block-end: 0;
     -webkit-margin-before: 0;
-            margin-block-start: 0;
+    margin-block-start: 0;
     font-variant: small-caps;
 }
 
 /* logramos que el círculo que corresponde con cada skill esté rodeada por un círculo de aspecto "pintado" usando position:relative en el div padre y con ::after posicionamos dicho círculo como background */
 
-#img_skill{
+#img_skill {
     position: relative;
 }
 
-#img_skill img{
+#img_skill img {
     width: 8rem;
 }
 
-#img_skill::after{
+#img_skill::after {
     content: '';
     position: absolute;
-    bottom:  0.5rem;
+    bottom: 0.5rem;
     left: 0rem;
     right: 0rem;
     height: 95%;
@@ -105,45 +106,45 @@ html, body {
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
     -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
 }
 
-#description p{
+#description p {
     font-family: var(--text-font);
     color: var(--text-white);
     font-size: clamp(1.8rem, calc(1.8rem + ((1vw - 0.48rem) * 1.6667)), 3rem);
     font-variant: small-caps;
     -webkit-margin-before: 0.1em;
-            margin-block-start: 0.1em;
+    margin-block-start: 0.1em;
     -webkit-margin-after: 1em;
-            margin-block-end: 1em;
+    margin-block-end: 1em;
     -webkit-margin-start: 0px;
-            margin-inline-start: 0px;
+    margin-inline-start: 0px;
     -webkit-margin-end: 0px;
-            margin-inline-end: 0px;
+    margin-inline-end: 0px;
 }
 
 /* usamos span para incluir las imágenes de los iconos de los controles asociados con cada skill y poder intercalarlos con la descripción. Con vertical-align:middle nos aseguramos que las imágenes están centradas de forma vertical al texto */
 
-#description span{
+#description span {
     text-align: center
 }
 
-#description span img{
-    width:1em;
-    vertical-align:middle;
+#description span img {
+    width: 1em;
+    vertical-align: middle;
 }
 
 /* con esto logramos colocar un recuadro de efecto "pintado" alrededor de la foto de ejemplo de la skill dentro del juego usando el mismo método de antes: position relative en el elemento padre, ::after posicionado con top, bottom, left y rigth y recuadro como background-image */
 
-#description_img{
+#description_img {
     position: relative;
     display: block;
     width: 100%;
@@ -151,11 +152,11 @@ html, body {
     background-color: transparent;
 }
 
-#description_img img{
+#description_img img {
     width: clamp(18rem, calc(18rem + ((1vw - 0.48rem) * 26.3889)), 37rem);
 }
 
-#description_img::after{
+#description_img::after {
     content: '';
     position: absolute;
     top: -0.5rem;
@@ -168,7 +169,7 @@ html, body {
     background-size: cover;
 }
 
-#profile{
+#profile {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -182,16 +183,16 @@ html, body {
     width: 85vw;
     margin: auto;
     position: relative;
-   /* height: 8rem; */
+    /* height: 8rem; */
 }
 
-.slider{
+.slider {
     padding: 0 10em;
 }
 
 /* esto hace que el div padre donde se encuentran los botones para ir al siguiente o anterior elemento no ocupe espacio */
 
-.owl-carousel .owl-nav{
+.owl-carousel .owl-nav {
     overflow: hidden;
     height: 0px;
     margin-top: 0px;
@@ -199,7 +200,7 @@ html, body {
 
 /* con esto hacemos que el elemento que esté en el centro esté opaco y con un círculo "pintado" para indicarle al usuario que es la opción seleccionada y de la que se van a conseguir los datos */
 
-.item img{
+.item img {
     width: 9em;
     opacity: 0.3;
     -webkit-transition: all .4s;
@@ -207,16 +208,16 @@ html, body {
     transition: all .4s;
 }
 
-.item img:hover{
+.item img:hover {
     opacity: 1;
     cursor: pointer;
 }
 
-.center img{
+.center img {
     opacity: 1 !important;
 }
 
-.center::after{
+.center::after {
     content: '';
     position: absolute;
     bottom: 0rem;
@@ -231,13 +232,13 @@ html, body {
 
 /* lo siguiente hace que las imágenes personalizadas que usamos como flechas actúen como los botones de siguiente y anterior y que estén colocadas correctamente. Webkit para compatibilidad*/
 
-.owl-carousel .nav-btn{
+.owl-carousel .nav-btn {
     position: absolute;
     cursor: pointer;
     top: 30% !important;
 }
 
-.nav-btn img{
+.nav-btn img {
     width: 2em;
 }
 
@@ -247,22 +248,23 @@ html, body {
     opacity: 0.2;
 } */
 
-.owl-carousel .prev-slide{
+.owl-carousel .prev-slide {
     -webkit-transform: rotate(-180deg);
-        -ms-transform: rotate(-180deg);
-            transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg);
+    transform: rotate(-180deg);
     opacity: 0.5;
     left: 100px;
     /* position: relative; */
 }
 
-.owl-carousel .next-slide{
+.owl-carousel .next-slide {
     opacity: 0.5;
     right: 100px;
     /* position: relative; */
 }
 
-.owl-carousel .prev-slide:hover,.next-slide:hover{
+.owl-carousel .prev-slide:hover,
+.next-slide:hover {
     opacity: 1;
 }
 
@@ -308,13 +310,13 @@ html, body {
 /* BREAKPOINT IPAD */
 /* modificamos el tamaño de la tarjeta para que se ajuste mejor al tamaño del iPad */
 
-@media screen and (max-width: 830px) { 
+@media screen and (max-width: 830px) {
 
-    #card_content{
+    #card_content {
         -webkit-box-orient: vertical;
         -webkit-box-direction: reverse;
-            -ms-flex-direction: column-reverse;
-                flex-direction: column-reverse;
+        -ms-flex-direction: column-reverse;
+        flex-direction: column-reverse;
         /* -ms-flex-pack: distribute;
             justify-content: space-evenly; */
     }
@@ -323,7 +325,7 @@ html, body {
         width: 90%;
     }
 
-    #description p{
+    #description p {
         width: 90%;
         -webkit-margin-before: 1rem;
         margin-block-start: 1rem;
@@ -336,35 +338,45 @@ html, body {
 /* BREAKPOINT MÓVIL */
 /* para móvil cambiamos la dirección de los flex para poner los contenidos en columna y modificar el tamaño de algunos elementos para ajustarlos mejor a las dimensiones de móvil. Webkit para compatibilidad */
 
-@media screen and (max-width: 793px) { 
-    
-    #skills{
-        -webkit-box-orient:vertical;
-        -webkit-box-direction:reverse;
-            -ms-flex-direction:column-reverse;
-                flex-direction:column-reverse;
+@media screen and (max-width: 793px) {
+
+    html,
+    body {
+        min-width: 100%;
+        min-height: 100%;
     }
 
-    #card{
+    #skills {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+        flex-direction: column-reverse;
+    }
+
+    #card {
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
-            -ms-flex-direction: column;
-                flex-direction: column;
-        width:90%;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        width: 90%;
         /* min-height: 100%;  */
     }
 
-    #card_content{
+    #card_content {
         -webkit-box-orient: vertical;
         -webkit-box-direction: reverse;
-            -ms-flex-direction: column-reverse;
-                flex-direction: column-reverse;
+        -ms-flex-direction: column-reverse;
+        flex-direction: column-reverse;
         -ms-flex-pack: distribute;
-            justify-content: space-around;
+        justify-content: space-around;
         /* min-height: 100%; */
     }
 
-    #description{
+    #profile {
+        margin-top: 2rem;
+    }
+
+    #description {
         width: initial;
     }
 
@@ -376,5 +388,3 @@ html, body {
         width: 1.5rem;
     }
 }
-
-

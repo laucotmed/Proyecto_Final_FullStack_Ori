@@ -119,7 +119,7 @@
     </section>
   </div>
 
-  <!-- Enlace al script-->
+  <!-- Enlace a los scripts-->
   <script src="src/scripts/script.js"></script>
 </body>
 </html>
