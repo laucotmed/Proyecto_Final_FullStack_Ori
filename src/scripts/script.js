@@ -69,6 +69,8 @@ $(document).ready(function () {
         nav: true,
         navText: ["<div class='nav-btn prev-slide'><img src='./src/img/arrow.png' alt='next_arrow.png'></div>", "<div class='nav-btn next-slide'><img src='./src/img/arrow.png' alt='next_arrow.png'></div>"],
         dots: false,
+        touchDrag: true,
+        mouseDrag:true,
         responsive: {
             0: {
                 items: 1
