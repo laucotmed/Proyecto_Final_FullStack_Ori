@@ -272,6 +272,10 @@ body {
         height: 100%;
     }
 
+    #card{
+        height: 55em;
+    }
+
     #card_content {
         -webkit-box-orient: vertical;
         -webkit-box-direction: reverse;
