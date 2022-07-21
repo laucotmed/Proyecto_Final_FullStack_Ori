@@ -261,6 +261,13 @@ body {
 /* BREAKPOINT IPAD */
 /* modificamos el tamaño de la tarjeta para que se ajuste mejor al tamaño del iPad cuando está en modo vertical */
 
+@media screen and (min-width: 768px) and (max-width: 1280px) and (orientation:portrait){
+
+    #card{
+        height: 55em;
+    }
+}
+
 @media screen and (min-width: 800px) and (max-width: 1280px){
 
     html{
@@ -272,9 +279,9 @@ body {
         height: 100%;
     }
 
-    #card{
+   /*  #card{
         height: 55em;
-    }
+    } */
 
     #card_content {
         -webkit-box-orient: vertical;
