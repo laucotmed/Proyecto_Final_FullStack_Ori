@@ -181,7 +181,7 @@ body {
 .carousel-wrap {
     width: 85vw;
     margin: auto;
-    position: relative;
+    /* position: relative; */
 }
 
 .slider {
@@ -261,7 +261,7 @@ body {
 /* BREAKPOINT IPAD */
 /* modificamos el tamaño de la tarjeta para que se ajuste mejor al tamaño del iPad cuando está en modo vertical */
 
-@media only screen and (min-device-width: 765px) and (max-device-width: 930px) and (orientation: portrait) {
+@media screen and (min-width: 800px) and (max-width: 1280px){
 
     html{
         height: initial;
@@ -285,6 +285,7 @@ body {
 
     #description {
         width: 90%;
+        margin-bottom: 2rem;
     }
 
     #description p {
@@ -306,7 +307,7 @@ body {
 /* BREAKPOINT MÓVIL */
 /* para móvil cambiamos la dirección de los flex para poner los contenidos en columna y modificar el tamaño de algunos elementos para ajustarlos mejor a las dimensiones de móvil. Webkit para compatibilidad */
 
-@media screen and (max-width: 793px) {
+@media screen and (min-width: 343px) and (max-width: 799px) {
 
    /*  html,
     body {
