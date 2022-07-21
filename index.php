@@ -46,7 +46,7 @@
   </nav>
 
   <!-- Sección donde va el fondo de la página -->
-  <section id="home_background"></section>
+ <!--  <section id="home_background"></section> -->
 
   <!-- Enlace al script-->
   <script src="src/scripts/script.js"></script>
