@@ -84,7 +84,6 @@ p {
 * {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    overflow-y: overlay;
 }
 
 /* le damos un color al html para que cuando se produzca la transición de una página a otra, el cambio sea más suave ya que ambas páginas tendrán el mismo color al ocultar y volver hacer aparecer el body en el script */
@@ -102,6 +101,7 @@ body {
     min-width: 100%; */
     /* height: 100%;
     width: 100%; */
+   /*  overflow-y: overlay; */
    
 }
 
