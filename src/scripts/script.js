@@ -2,52 +2,21 @@
 
 $(document).ready(function () {
 
-    /* TRANSICIÓN ENTRE PÁGINAS SUAVE */
-
-    /* Para lograr una transición menos brusca entre las páginas de nuestro sitio web, recurrimos al siguiente código en el que hacemos que el contenido del body aparezca suavemente con un evento de fadeIn y que al hacer click sobre alguno de los links que tengan la clase transition, evitamos que siga el link inmediatamente, y a continuación guarda la dirección en linkLocation y se produce un fadeOut que lleva a la página elegida */
-
-    /*   $("body").css("display", "none");
-      $("body").fadeIn(3000);
-      $("a.transition").click(function (event) {
-          event.preventDefault();
-          linkLocation = this.href;
-          $("body").fadeOut(3000, redirectPage);
-      });
-
-      function redirectPage() {
-          window.location = linkLocation;
-      } */
-
     /* MENÚ HAMBURGUESA */
 
     /* Hacemos un evento en el que al hacer click en nuestro icono de hamburguesa, las distintas clases se añadan a las líneas que lo forman y se produce una pequeña animación para convertirlas en una X y viceversa al usar toggleClass.  */
 
     $("#burger_menu").click(function () {
 
-        //Animación de las barras añadiendo las clases en CSS en las que se modifican la rotación y opacidad
+        /* Animación de las barras añadiendo las clases en CSS en las que se modifican la rotación y opacidad */
         $("#burger_menu>span:nth-child(1)").toggleClass("primera")
         $("#burger_menu>span:nth-child(2)").toggleClass("segunda")
         $("#burger_menu>span:nth-child(3)").toggleClass("tercera")
 
-        //Despliego del menú en móvil añadiendo la clase CSS show. En caso de hacer clic en la "X", se desactivaría, cerrando el menú. Usamos stop() para evitar que se forme una cola de acciones si se hace clics muy rápidamente y seguidos.
+        /* Despliego del menú en móvil añadiendo la clase CSS show. En caso de hacer clic en la "X", se desactivaría, cerrando el menú. Usamos stop() para evitar que se forme una cola de acciones si se hace clics muy rápidamente y seguidos. También añadimos la clase "overflow-menu" al body, evitando que podamos hacer scroll mientras el menú se encuentre abierto. */
         $(".menu_items").stop()
         $(".menu_items").toggleClass("show")
-
-        /*Hacemos lo mismo con la clase "overflow-menu", que evitará que podamos movernos por la web al abrir el menú. */
         $('body').toggleClass("overflow-menu");
-    })
-
-    /*Creamos una función al hacer clic en cualquiera de los elementos del menú. Esta revertirá las clases activadas al hacer clic al "menú hamburguesa".
-    De esta forma nos aseguramos que al hacer clic ya sea en el menú para cerrarlo o en cualquiera de sus elementos, todo vuelva a su lugar.
-    Esto SOLO funcionará si el menú ya tiene la clase "overflow-menu", de lo contrario, evitaría poder scrollear al usar el menú en Desktop.*/
-    $(".menu_item").click(function () {
-        if ($('body').hasClass("overflow-menu")) {
-            $('body').toggleClass("overflow-menu");
-            $(".menu_items").toggleClass("show");
-            $("#burger_menu>span:nth-child(1)").toggleClass("primera");
-            $("#burger_menu>span:nth-child(2)").toggleClass("segunda");
-            $("#burger_menu>span:nth-child(3)").toggleClass("tercera");
-        }
     })
 
     /*  SLIDER */
@@ -60,7 +29,7 @@ $(document).ready(function () {
         $(this).attr('data-position', index);
     });
 
-    //con esto personalizamos algunas características del carrusel, como el centrar los elementos, las flechas personalizadas o el responsive
+    /* con esto personalizamos algunas características del carrusel, como el centrar los elementos, que cuando llegues al último elemento el siguiente sea el primero, el número de elementos en que contiene, las flechas personalizadas, si se puede hacer "drag" en ordenador y móvil o el responsive */
 
     $owl.owlCarousel({
         center: true,
@@ -70,7 +39,7 @@ $(document).ready(function () {
         navText: ["<div class='nav-btn prev-slide'><img src='./src/img/arrow.png' alt='next_arrow.png'></div>", "<div class='nav-btn next-slide'><img src='./src/img/arrow.png' alt='next_arrow.png'></div>"],
         dots: false,
         touchDrag: true,
-        mouseDrag:true,
+        mouseDrag: true,
         responsive: {
             0: {
                 items: 1
@@ -96,7 +65,7 @@ $(document).ready(function () {
 
     /* MUTATION OBSERVER */
 
-    /*  Con esto creamos un nuevo "observador" empleando el objeto integrado de MutationObserver. Dicho observador vigila si hay algún cambio en el elemento que le indiquemos (en la línea 140 de este código). En este caso le decimos que entre todos los elementos que cambian (mutations.forEach), si existe alguno que tenga la clase "center" (if ($target.hasClass("center"))), recoja el data-value de ese hijo y se realice todo lo demás (animación y llamada a AJAX)  */
+    /*  Con esto creamos un nuevo "observador" empleando el objeto integrado de Javascript de MutationObserver. Dicho observador vigila si hay algún cambio en el elemento que le indiquemos (en la línea 140 de este código). En este caso le decimos que entre todos los elementos que cambian (mutations.forEach), si existe alguno que tenga la clase "center" (if ($target.hasClass("center"))), recoja el data-value de ese hijo y se realice todo lo demás (animación y llamada a AJAX)  */
 
     var observer = new MutationObserver(function (mutations) {
         mutations.forEach(function (mutation) {
@@ -145,11 +114,11 @@ $(document).ready(function () {
         });
     });
 
-    /* Este es el elemento que le indicamos a nuestro observador que vigile (el contenedor padre donde se encuentran todos nuestros items). Configuramos también algunas opciones de este objeto para que mire los cambios que se produzcan en los hijos */
+    /* Este es el elemento que le indicamos a nuestro observador que vigile (el contenedor padre donde se encuentran todos nuestros items). Como Jquery recoge este elemento como un objeto, tenemos que indicarle el índice cero para poder usarlo. Configuramos también algunas opciones de este objeto para que mire los cambios que se produzcan en los hijos */
 
-    const elementToObserve = document.querySelector(".owl-stage");
+    var elementsToObserve = $(".owl-stage")[0];
 
-    observer.observe(elementToObserve, {
+    observer.observe(elementsToObserve, {
         attributes: true,
         subtree: true,
         childList: true

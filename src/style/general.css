@@ -15,14 +15,48 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&family=Permanent+Marker&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=PT+Sans+Narrow&family=Permanent+Marker&display=swap');
 
-/* establecemos los estilos de los títulos y párrafos que vamos a emplear en todo nuestro sitio web */
+/* COLORES Y TIPOGRAFÍAS ROOT */
+
+/* en el root vamos a indicar los colores y tipografías que usaremos en toda la web, para poder modificar fácilmente alguno de ellos si queremos */
+
+:root {
+    --accent-orange: #E67E35;
+    --text-white: #F1F1F1;
+    --title-font: LeviBrush, 'Permanent Marker';
+    --text-font: LemonCake, 'Amatic SC';
+}
+
+/* BODY */
+
+/* usamos este selector universal para hacer que todos los tamaños del documento tengan en cuenta el padding. Webkit para compatibilidad */
+
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* le quitamos el margin y el padding al body para evitar bordes blancos indeseados. También agregamos un degradado al body. Webkit para compatibilidad*/
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: -o-linear-gradient(257.99deg, #0D0D2E 7.77%, #0A184B 47.18%, #2C0E31 92.33%);
+    background: linear-gradient(192.01deg, #0D0D2E 7.77%, #0A184B 47.18%, #2C0E31 92.33%);
+    background-repeat: no-repeat;
+}
+
+/* establecemos el estilo general de los títulos y párrafos que vamos a emplear en todo nuestro sitio web, quitando los márgenes que vienen por defecto, etc. */
 
 h1 {
     font-family: var(--title-font);
     color: var(--text-white);
-    /* text-shadow: 0px 0px 10px var(--accent-orange); */
     text-align: center;
+    -webkit-margin-after: 0;
     margin-block-end: 0;
+    -webkit-margin-before: 0;
     margin-block-start: 0;
     font-variant: small-caps;
 }
@@ -41,82 +75,9 @@ p {
     margin-inline-end: 0px;
 }
 
-/* COLORES Y TIPOGRAFÍAS ROOT */
-
-/* en el root vamos a indicar los colores y tipografías que usaremos en toda la web, para poder modificar fácilmente alguno de ellos si queremos */
-
-:root {
-    --accent-orange: #E67E35;
-    --text-white: #F1F1F1;
-    --title-font: LeviBrush, 'Permanent Marker';
-    --text-font: LemonCake, 'Amatic SC';
-}
-
-/* PERSONALIZACIÓN DEL SCROLLBAR */
-
-/* width */
-::-webkit-scrollbar {
-    width: 12px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    box-shadow: inset 0 0 5px grey;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: var(--accent-orange);
-    border-radius: 20px;
-
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: rgb(255, 181, 102);
-}
-
-/* BODY */
-
-/* usamos este selector universal para hacer que todos los tamaños del documento tengan en cuenta el padding. Webkit para compatibilidad */
-
-* {
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    
-}
-
-/* le damos un color al html para que cuando se produzca la transición de una página a otra, el cambio sea más suave ya que ambas páginas tendrán el mismo color al ocultar y volver hacer aparecer el body en el script */
-
-/* html{
-    background-color: white;
-} */
-
-/* le quitamos el margin y el padding al body para evitar bordes blancos indeseados, y le damos una altura y anchura de mínimo 100% para que ocupen toda la pantalla*/
-html,
-body {
-    margin: 0;
-    padding: 0;
-    /* min-height: 100%;
-    min-width: 100%; */
-    /* height: 100%;
-    width: 100%; */
-   /*  overflow-y: overlay; */
-   
-}
-
-/* agregamos un degradado al body. Webkit para compatibilidad */
-
-body {
-    background: -o-linear-gradient(257.99deg, #0D0D2E 7.77%, #0A184B 47.18%, #2C0E31 92.33%);
-    background: linear-gradient(192.01deg, #0D0D2E 7.77%, #0A184B 47.18%, #2C0E31 92.33%);
-    background-repeat: no-repeat;
-}
-
 /* MENÚ PRINCIPAL */
 
-/* le damos un ancho de 100% al menú para que ocupe toda la parte de arriba de nuestra web, y con display flex alineamos los elementos del menú (logo y links a otras páginas). Ajustamos también el tamaño del logo (cálculo con clamp para hacerlo fluido) y le añadimos un efecto de hover para indicarle al usuario que puede hacer click encima. Webkit para compatibilidad. */
+/* le damos un ancho de 100% al menú para que ocupe toda la parte de arriba de nuestra web, y con display flex alineamos los elementos del menú (logo y links a otras páginas). Ajustamos también el tamaño del logo (cálculo con clamp para hacer que se adapte de forma fluida a las distintas dimensiones de pantalla) y le añadimos un efecto de hover para indicarle al usuario que puede hacer click encima. Webkit para compatibilidad. */
 
 .menu {
     width: 100%;
@@ -235,7 +196,6 @@ body {
     background-image: url('../img/underline.svg');
     background-repeat: no-repeat;
     background-size: cover;
-
 }
 
 /* MENÚ HAMBURGUESA */
@@ -291,7 +251,7 @@ body {
     transition: all 0.4s;
 }
 
-/* esta clase nos permite mostrar/ocultar el menú en móvil al hacer clic sobre el botón */
+/* la clase nos permite mostrar/ocultar el menú en móvil al hacer clic sobre el botón, y la de overflow-menu hace que no se pueda hacer scroll por la página cuando el menú se encuentre abierto */
 
 ul.show {
     top: 0;
@@ -305,7 +265,6 @@ ul.show {
     height: 100%;
     margin: 0;
     overflow: hidden;
-    /* position: absolute; */
     top: 0;
     left: 0;
 }

@@ -1,12 +1,20 @@
-/* hacemos que el html y el body tengan una altura y anchura de 100% para que los elementos ocupen toda la pantalla*/
+/* hacemos que el html y el body tengan una altura y anchura de 100% para que los elementos ocupen toda la pantalla y con overflow-x:hidden evitamos que haya barra de scroll horizontal */
 html,
 body {
     width: 100%;
     height: 100%;
+    overflow-x: hidden;
 }
 
+/* Empleamos este container para meter el menú y el resto de contenido para poder conseguir que la tarjeta se adapte al espacio que haya en cada momento entre el menú y el slider con la propiedad de flex-grow:1 */
+
 #container {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     height: 100%;
 }
@@ -41,7 +49,6 @@ body {
     background-repeat: no-repeat;
     background-size: 100% 100%;
     width: 80%;
-   /*  height: 90%; */
     -webkit-box-flex: 1;
     -ms-flex-positive: 1;
     flex-grow: 1;
@@ -54,6 +61,7 @@ body {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-pack: distribute;
+    -webkit-box-pack: space-evenly;
     justify-content: space-evenly;
     -webkit-box-align: center;
     -ms-flex-align: center;
@@ -62,83 +70,14 @@ body {
 }
 
 #card_content h1 {
-    font-family: var(--title-font);
-    color: var(--text-white);
     text-align: center;
     font-size: clamp(1.5rem, calc(1.5rem + ((1vw - 0.48rem) * 1.3889)), 2.5rem);
-    -webkit-margin-after: 0;
-    margin-block-end: 0;
-    -webkit-margin-before: 0;
-    margin-block-start: 0;
-    font-variant: small-caps;
 }
 
-/* logramos que el círculo que corresponde con cada skill esté rodeada por un círculo de aspecto "pintado" usando position:relative en el div padre y con ::after posicionamos dicho círculo como background */
-
-#img_skill {
-    position: relative;
-}
-
-#img_skill img {
-    width: 8rem;
-}
-
-#img_skill::after {
-    content: '';
-    position: absolute;
-    bottom: 0.5rem;
-    left: 0rem;
-    right: 0rem;
-    height: 95%;
-    z-index: -1;
-    background-image: url('../img/circle.svg');
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-/* le damos un tamaño a la parte de la descripción de la tarjeta y display:flex con flex-direction:column para que los elementos salgan en columna. Volvemos a usar el cálculo con clamp para hacer que el texto se adapte de forma fluida al tamaño del navegador y modificamos los márgenes que tiene por defecto. Webkit para compatibilidad*/
-
-#description {
-    width: 40%;
+#profile {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-}
-
-#description p {
-    font-family: var(--text-font);
-    color: var(--text-white);
-    font-size: clamp(1.8rem, calc(1.8rem + ((1vw - 0.48rem) * 1.6667)), 3rem);
-    font-variant: small-caps;
-    -webkit-margin-before: 0.1em;
-    margin-block-start: 0.1em;
-    -webkit-margin-after: 1em;
-    margin-block-end: 1em;
-    -webkit-margin-start: 0px;
-    margin-inline-start: 0px;
-    -webkit-margin-end: 0px;
-    margin-inline-end: 0px;
-}
-
-/* usamos span para incluir las imágenes de los iconos de los controles asociados con cada skill y poder intercalarlos con la descripción. Con vertical-align:middle nos aseguramos que las imágenes están centradas de forma vertical al texto */
-
-#description span {
-    text-align: center
-}
-
-#description span img {
-    width: 1em;
-    vertical-align: middle;
 }
 
 /* con esto logramos colocar un recuadro de efecto "pintado" alrededor de la foto de ejemplo de la skill dentro del juego usando el mismo método de antes: position relative en el elemento padre, ::after posicionado con top, bottom, left y rigth y recuadro como background-image */
@@ -168,11 +107,67 @@ body {
     background-size: cover;
 }
 
-#profile {
+/* le damos un tamaño a la parte de la descripción de la tarjeta y display:flex con flex-direction:column para que los elementos salgan en columna. Volvemos a usar el cálculo con clamp para hacer que el texto se adapte de forma fluida al tamaño del navegador y modificamos los márgenes que tiene por defecto. Webkit para compatibilidad*/
+
+#description {
+    width: 40%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
 }
+
+#description p {
+    font-size: clamp(1.8rem, calc(1.8rem + ((1vw - 0.48rem) * 1.6667)), 3rem);
+    -webkit-margin-before: 0.1em;
+    margin-block-start: 0.1em;
+    -webkit-margin-after: 1em;
+    margin-block-end: 1em;
+}
+
+/* usamos span para incluir las imágenes de los iconos de los controles asociados con cada skill y poder intercalarlos con la descripción. Con vertical-align:middle nos aseguramos que las imágenes están centradas de forma vertical con el texto */
+
+#description span {
+    text-align: center
+}
+
+#description span img {
+    width: 1em;
+    vertical-align: middle;
+}
+
+/* logramos que el círculo que corresponde con cada skill esté rodeada por un círculo de aspecto "pintado" usando position:relative en el div padre y con ::after posicionamos dicho círculo como background */
+
+#img_skill {
+    position: relative;
+}
+
+#img_skill img {
+    width: 8rem;
+}
+
+#img_skill::after {
+    content: '';
+    position: absolute;
+    bottom: 0.5rem;
+    left: 0rem;
+    right: 0rem;
+    height: 95%;
+    z-index: -1;
+    background-image: url('../img/circle.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 
 /* SLIDER */
 
@@ -181,7 +176,6 @@ body {
 .carousel-wrap {
     width: 85vw;
     margin: auto;
-    /* position: relative; */
 }
 
 .slider {
@@ -261,27 +255,25 @@ body {
 /* BREAKPOINT IPAD */
 /* modificamos el tamaño de la tarjeta para que se ajuste mejor al tamaño del iPad cuando está en modo vertical */
 
-@media screen and (min-width: 768px) and (max-width: 1280px) and (orientation:portrait){
+@media screen and (min-width: 768px) and (max-width: 1280px) and (orientation:portrait) {
 
-    #card{
+    #card {
         height: 48em;
     }
 }
 
-@media screen and (min-width: 800px) and (max-width: 1280px){
+/* modificamos la altura del html y del body para conseguir un tamaño más ajustado a las dimensiones de tablet en horizontal. Cambiamos también la disposición del contenido a column-reverse y su tamaño  */
 
-    html{
+@media screen and (min-width: 800px) and (max-width: 1280px) {
+
+    html {
         height: initial;
         min-height: 100%;
     }
-    
-    body{
+
+    body {
         height: 100%;
     }
-
-   /*  #card{
-        height: 55em;
-    } */
 
     #card_content {
         -webkit-box-orient: vertical;
@@ -304,6 +296,7 @@ body {
         font-size: 2.1em;
         -webkit-margin-before: 1rem;
         margin-block-start: 1rem;
+        -webkit-margin-after: 0rem;
         margin-block-end: 0rem;
         -webkit-margin-start: 0rem;
     }
@@ -318,24 +311,14 @@ body {
 /* BREAKPOINT MÓVIL */
 /* para móvil cambiamos la dirección de los flex para poner los contenidos en columna y modificar el tamaño de algunos elementos para ajustarlos mejor a las dimensiones de móvil. Webkit para compatibilidad */
 
-@media screen and (min-width: 343px) and (max-width: 799px) {
+@media screen and (min-width: 320px) and (max-width: 799px) {
 
-   /*  html,
-    body {
-        width: initial;
-        height: initial; */
-        /* min-width: 100%;
-        min-height: 100%; */
-   /*      min-width: initial;
-        min-height: initial;
-    } */
-
-    html{
+    html {
         height: initial;
         min-height: 100%;
     }
-    
-    body{
+
+    body {
         height: 100%;
     }
 
