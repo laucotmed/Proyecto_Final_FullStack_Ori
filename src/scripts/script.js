@@ -3,7 +3,6 @@
 $(document).ready(function () {
 
     /* MENÚ HAMBURGUESA */
-
     /* Hacemos un evento en el que al hacer click en nuestro icono de hamburguesa, las distintas clases se añadan a las líneas que lo forman y se produce una pequeña animación para convertirlas en una X y viceversa al usar toggleClass.  */
 
     $("#burger_menu").click(function () {
@@ -19,9 +18,77 @@ $(document).ready(function () {
         $('body').toggleClass("overflow-menu");
     })
 
-    /*  SLIDER */
 
-    /* En la siguiente sección de código realizamos varias funciones relacionadas con el plugin Owl Carousel 2. Para empezar, guardamos el div que contiene el carrusel/slider para poder usarlo más rápidamente y hacemos que los divs hijos adquieran el atributo data-position acorde a su posición para poder centrarlos posteriormente */
+
+    /* MOSTRAR PERSONAJES Y ANIMACIÓN */
+    /* Esta sección de código es para mostrar a los personajes en la página de Characters. Para evitar que se esté llamando constantemente al DOM, usamos las siguientes variables para tener guardados los elementos a animar, así como la "ventana"  */
+    var $animation_elements = $('.character_container');
+    var $window = $(window);
+
+    /* Con esto al hacer scroll por la página llamamos a las funciones para detectar si un elemento está en pantalla y para mostrar el botón llegado a cierta altura de scroll */
+
+    $(window).on("scroll", function () {
+        elementInView();
+        showButton();
+    });
+
+    /* Con esto conseguimos que el primer elemento también tenga la pequeña animación de aparición al activarse el evento de scroll */
+    $window.trigger('scroll');
+
+    /* función para detectar si una sección de personaje está en pantalla */
+
+    function elementInView() {
+
+        /* Primero guardamos la altura de la ventana, la posición de arriba y la posición de abajo en variables*/
+        var window_height = $window.height();
+        var window_top_position = $window.scrollTop();
+        var window_bottom_position = (window_top_position + window_height);
+
+        /* Ahora, por cada elemento que pueda aparecer, guardamos el propio elemento, su altura, su posición desde arriba y su posición desde abajo en variables también */
+
+        $.each($animation_elements, function () {
+            var $element = $(this);
+            var element_height = $element.outerHeight();
+            var element_top_position = $element.offset().top;
+            var element_bottom_position = (element_top_position + element_height);
+
+            //esto comprueba si el elemento se encuentra en pantalla, siendo esto si la posición de abajo del elemento es mayor a la zona superior de la ventana, y si su posición de arriba menor a la zona inferior de la ventana. Si se da esta condición, se le añade la clase in-view que muestra el elemento con una pequeña animación, y se le quita si no.
+            if ((element_bottom_position >= window_top_position) &&
+                (element_top_position <= window_bottom_position)) {
+                $element.addClass('in-view');
+            } else {
+                $element.removeClass('in-view');
+            }
+        });
+    }
+
+
+
+    /* BOTÓN BACK TO TOP */
+    /* También para la página de Characters. Comenzamos escondiendo el botón. */
+
+    $(".back_to_top").hide();
+
+    /* Esta función que también será llamada al hacer scroll simplemente comprueba si la posición superior de la ventana es mayor a 100, se muestra el botón con una animación de fadeIn, y si no es así, que se oculte con un fadeOut*/
+
+    function showButton() {
+        if ($(window).scrollTop() > 100) {
+            $(".back_to_top").fadeIn();
+        } else {
+            $(".back_to_top").fadeOut();
+        }
+    }
+
+    /* También le añadimos este evento click al "botón" con el que se hace scroll a la posición 0 de la ventana, es decodeURI, hacia arriba del todo de nuestra página web */
+    $(".back_to_top").click(function () {
+        $(window).scrollTop(0);
+    });
+
+
+
+
+    /*  SLIDER */
+    /* En la siguiente sección de código realizamos varias funciones relacionadas con el plugin Owl Carousel 2 que usamos en la página de Skills. Para empezar, guardamos el div que contiene el carrusel/slider para poder usarlo más rápidamente y hacemos que los divs hijos adquieran el atributo data-position acorde a su posición para poder centrarlos posteriormente */
 
     var $owl = $('.owl-carousel');
 
@@ -63,9 +130,11 @@ $(document).ready(function () {
         $owl.trigger('to.owl.carousel', [$(this).data('position'), $speed]);
     });
 
-    /* MUTATION OBSERVER */
 
-    /*  Con esto creamos un nuevo "observador" empleando el objeto integrado de Javascript de MutationObserver. Dicho observador vigila si hay algún cambio en el elemento que le indiquemos (en la línea 140 de este código). En este caso le decimos que entre todos los elementos que cambian (mutations.forEach), si existe alguno que tenga la clase "center" (if ($target.hasClass("center"))), recoja el data-value de ese hijo y se realice todo lo demás (animación y llamada a AJAX)  */
+
+
+    /* MUTATION OBSERVER */
+    /* Con esto creamos un nuevo "observador" empleando el objeto integrado de Javascript de MutationObserver. Dicho observador vigila si hay algún cambio en el elemento que le indiquemos (en la línea 140 de este código). En este caso le decimos que entre todos los elementos que cambian (mutations.forEach), si existe alguno que tenga la clase "center" (if ($target.hasClass("center"))), recoja el data-value de ese hijo y se realice todo lo demás (animación y llamada a AJAX)  */
 
     var observer = new MutationObserver(function (mutations) {
         mutations.forEach(function (mutation) {
