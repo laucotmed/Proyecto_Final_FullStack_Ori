@@ -6,7 +6,6 @@ $host = "containers-us-west-64.railway.app";
 $dbname = "railway";
 $username = "root";
 $password = "1liQKvB8ULRSpvE9tGhj";
-$port = "6544";
 
 $options = [
     \PDO::ATTR_ERRMODE  => \PDO::ERRMODE_EXCEPTION,
