@@ -2,10 +2,10 @@
 
 /* Estos son los datos necesarios para acceder a la base de datos (host, nombre de la base de datos, opciones de configuración...). Corresponden a los proporcionados por JawsDB en Heroku */
 
-$host = "containers-us-west-64.railway.app";
-$dbname = "railway";
-$username = "root";
-$password = "1liQKvB8ULRSpvE9tGhj";
+$host = "sql516.main-hosting.eu";
+$dbname = "u408988922_ori_bbdd";
+$username = "u408988922_laura";
+$password = "P4ssw0rd";
 
 $options = [
     \PDO::ATTR_ERRMODE  => \PDO::ERRMODE_EXCEPTION,
